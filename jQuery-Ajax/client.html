@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-Ajax</title>
+  <link crossorigin="anonymous" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap-grid.css" rel="stylesheet">
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2 class="page-header">JQuery发送Ajax请求</h2>
+      <button class="btn ">发送GET请求</button>
+      <button class="btn ">发送POST请求</button>
+      <button class="btn ">通用型方法Ajax</button>
+</div>
+<script>
+    $('button').eq(0).click(function () {
+        $.get('http://127.0.0.1:8000/jQuery-sever',{a:100,b:200},function (data) {
+            console.log(data);
+        },'json');
+//url	必选参数，表示被加载的页面地址,data	可选参数，表示发送到服务器的数据,fn	可选参数，表示请求成功后的回调函数，type	可选参数，表示服务器返回的内容格式
+
+
+
+    })
+    $('button').eq(1).click(function () {
+        $.post('http://127.0.0.1:8000/jQuery-sever',{a:100,b:200},function (data) {
+            console.log(data);
+        });
+
+    })
+   $('button').eq(2).click(function () {
+       $.ajax({
+           type:'get',//请求类型
+           url:'http://127.0.0.1:8000/jQuery-sever',//路由位置
+           data:{a:100,b:100},//参数
+           success :function(data){
+                console.log(data);
+           },
+       });
+
+
+
+   });
+
+
+</script>
+</body>
+</html>

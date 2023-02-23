@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp试用</title>
+</head>
+<body>
+    用户名:<input type="text" id="username">
+    <p></p>
+<script>
+    //获取input和p元素
+    const input = document.querySelector('input');
+    const p = document.querySelector( "p")
+    //绑定事件
+    input.onblur = function (){
+    let username = this.value;
+    //获得用户的输入值
+        const script = document.createElement('script');
+        //创建一个新的script标签
+        script.src = 'http://127.0.0.1:8000/check-username';
+        //设置src属性
+        document.body.appendChild(script);
+        //插入一个新的script标签到文档中
+    }
+
+
+
+    function handle(data) {
+        input.style.border = "solid 1px red";
+        p.innerHTML = data.msg;
+    }
+</script>
+</body>
+</html>

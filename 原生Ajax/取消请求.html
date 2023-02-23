@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>取消请求</title>
+  <style>
+    button{
+      border: solid 1px black;
+      height: 100px;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+<button>发送请求</button>
+<button>取消请求</button>
+<script>
+          const xhrs = document.querySelectorAll('button')
+          //获取button元素
+          let x = null;
+          xhrs[0].onclick = function (){
+              x =new XMLHttpRequest()
+            //创建对象
+            x.open('GET','http://127.0.0.1:8000/delay')
+            //设置请求方法和URL路径
+               x.send()
+            //发送
+          }
+          xhrs[1].onclick = function () {
+            x.abort();
+            //点击第二个button标签时，调用abort函数取消
+          }
+</script>
+</body>
+</html>

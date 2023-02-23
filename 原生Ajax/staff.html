@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>web前端开发工程师机试题</title>
+    <style>
+        li{
+            list-style: none;
+            display: inline;
+
+
+        }
+        .employee-list{
+            height: 50px;
+            width: 280px;
+
+
+        }
+        .employee-list li{
+
+            line-height: 50px;
+
+
+        }
+        #result{
+            border: solid 1px black;
+            height: 400px;
+            width: 400px;
+        }
+
+    </style>
+</head>
+<body>
+<p>请选择部门/员工:</p>
+<ul id="department-list">
+    <li ><input type="checkbox" id="departmentCheckbox">部门一
+        <span class="toggle-btn">+</span>
+        <ul class="employee-list">
+            <li><input type="checkbox" class="employeeCheckbox">员工一</li>
+            <li><input type="checkbox" class="employeeCheckbox">员工二</li>
+            <li><input type="checkbox" class="employeeCheckbox">员工三</li>
+        </ul>
+        <script>
+            var departmentCheckbox = document.getElementById("departmentCheckbox");
+            var employeeCheckboxes = document.getElementsByClassName("employeeCheckbox");
+            departmentCheckbox.addEventListener("change", function() {
+                for (var i = 0; i < employeeCheckboxes.length; i++) {
+                    employeeCheckboxes[i].checked = departmentCheckbox.checked;
+                }
+            });
+
+            for (var i = 0; i < employeeCheckboxes.length; i++) {
+                employeeCheckboxes[i].addEventListener("change", function() {
+                    departmentCheckbox.checked = false;
+                    for (var j = 0; j < employeeCheckboxes.length; j++) {
+                        if (!employeeCheckboxes[j].checked) {
+                            departmentCheckbox.checked = false;
+                            break;
+                        }
+                        departmentCheckbox.checked = true;
+                    }
+                });
+            }
+        </script>
+        <script>
+            var toggleBtns = document.querySelectorAll('.toggle-btn');
+            for (var i = 0; i < toggleBtns.length; i++) {
+                toggleBtns[i].addEventListener('click', function () {
+                    var employeeList = this.nextElementSibling;
+                    if (employeeList.style.display === 'none') {
+                        employeeList.style.display = 'block';
+                        this.textContent = '-';
+                    } else {
+                        employeeList.style.display = 'none';
+                        this.textContent = '+';
+                    }
+                });
+            }
+        </script>
+    </li>
+    <li ><input type="checkbox" id="departmentCheckbox2">部门二
+        <span class="toggle-btn">+</span>
+        <ul class="employee-list">
+            <li><input type="checkbox" class="employeeCheckbox2">员工四</li>
+            <li><input type="checkbox" class="employeeCheckbox2">员工五</li>
+            <li><input type="checkbox" class="employeeCheckbox2">员工六</li>
+        </ul>
+        <script>
+            var departmentCheckbox2 = document.getElementById("departmentCheckbox2");
+            var employeeCheckboxes2 = document.getElementsByClassName("employeeCheckbox2");
+            departmentCheckbox2.addEventListener("change", function() {
+                for (var i = 0; i < employeeCheckboxes2.length; i++) {
+                    employeeCheckboxes2[i].checked = departmentCheckbox2.checked;
+                }
+            });
+
+            for (var i = 0; i < employeeCheckboxes2.length; i++) {
+                employeeCheckboxes2[i].addEventListener("change", function() {
+                    departmentCheckbox2.checked = false;
+                    for (var j = 0; j < employeeCheckboxes2.length; j++) {
+                        if (!employeeCheckboxes2[j].checked) {
+                            departmentCheckbox2.checked = false;
+                            break;
+                        }
+                        departmentCheckbox2.checked = true;
+                    }
+                });
+            }
+        </script>
+        <script>
+            var toggleBtns2 = document.querySelectorAll('.toggle-btn');
+            for (var i = 0; i < toggleBtns.length; i++) {
+                toggleBtns2[i].addEventListener('click', function () {
+                    var employeeList2 = this.nextElementSibling;
+                    if (employeeList2.style.display === 'none') {
+                        employeeList2.style.display = 'block';
+                        this.textContent = '-';
+                    } else {
+                        employeeList2.style.display = 'none';
+                        this.textContent = '+';
+                    }
+                });
+            }
+        </script>
+    </li>
+    <li ><input type="checkbox" id="departmentCheckbox3">部门三
+        <span class="toggle-btn">+</span>
+        <ul class="employee-list">
+            <li><input type="checkbox" class="employeeCheckbox3">员工七</li>
+            <li><input type="checkbox" class="employeeCheckbox3">员工八</li>
+            <li><input type="checkbox" class="employeeCheckbox3">员工九</li>
+        </ul>
+        <script>
+            var departmentCheckbox3 = document.getElementById("departmentCheckbox3");
+            var employeeCheckboxes3 = document.getElementsByClassName("employeeCheckbox3");
+            departmentCheckbox3.addEventListener("change", function() {
+                for (var i = 0; i < employeeCheckboxes3.length; i++) {
+                    employeeCheckboxes3[i].checked = departmentCheckbox3.checked;
+                }
+            });
+
+            for (var i = 0; i < employeeCheckboxes3.length; i++) {
+                employeeCheckboxes3[i].addEventListener("change", function() {
+                    departmentCheckbox3.checked = false;
+                    for (var j = 0; j < employeeCheckboxes3.length; j++) {
+                        if (!employeeCheckboxes3[j].checked) {
+                            departmentCheckbox3.checked = false;
+                            break;
+                        }
+                        departmentCheckbox3.checked = true;
+                    }
+                });
+            }
+        </script>
+<!--        控制复选框勾选-->
+        <script>
+            var toggleBtns = document.querySelectorAll('.toggle-btn');
+            for (var i = 0; i < toggleBtns.length; i++) {
+                toggleBtns[i].addEventListener('click', function () {
+                    var employeeList = this.nextElementSibling;
+                    if (employeeList.style.display === 'none') {
+                        employeeList.style.display = 'block';
+                        this.textContent = '-';
+                    } else {
+                        employeeList.style.display = 'none';
+                        this.textContent = '+';
+                    }
+                });
+            }
+        </script>
+<!--        通过正负号控制员工显示-->
+    </li>
+</ul>
+
+    </script>
+<script>
+    //1.引入express
+    const express = require('express');
+    //2.创建应用对象
+    const app = express();
+    //3.创建路由规则
+    //request是请求报文的封装
+    //responses是响应报文的封装
+    app.get('/service',(request,response)=>{
+        response.setHeader('Access-Control-Allow-Origin','*');
+        let data = new
+        response.send('ajaxcGET请求发送成功-10')
+    });
+</script>
+
+<!--<div id="result">-->
+<!--        -->
+<!--</div>-->
+
+
+</body>
+
+</html>

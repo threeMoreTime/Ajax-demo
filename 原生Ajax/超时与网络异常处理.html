@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网络超时返回异常</title>
+    <style>
+        #result{
+            border: solid 1px black;
+            height: 400px;
+            width: 400px;
+        }
+    </style>
+    <script src="../service.js"></script>
+</head>
+<body>
+
+<button>点击发送请求</button>
+<div id="result"></div>
+<script>
+    //获取button元素
+    const bth =  document.getElementsByTagName('button')[0];
+    const result = document.getElementById('result');
+
+    bth.onclick = function (){
+        //创建对象
+        const xhr = new XMLHttpRequest();
+        //设置延迟时间限制
+        xhr.timeout=2000;
+        //超时回调
+        xhr.ontimeout = function () {
+            alert('网络异常,请稍后重试');
+        }
+        //绑定事件
+        //初始化 设置请求方法和url 添加时间戳，可以每次刷新获取最近客户端返回结果
+        xhr.open('GET','http://127.0.0.1:8000/delay');
+        //发送
+        xhr.send();
+        //事件绑定 处理服务端返回的结果
+        xhr.onreadystatechange = function (){
+            //判断响应头是否返回了所有结果
+            if (xhr.readyState ===4 ){
+                //判断响应状态码
+                if (xhr.status>=200 && xhr.status<=300){
+
+                    result.innerHTML = xhr.response;
+                }
+                else {
+                    return 0;
+
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

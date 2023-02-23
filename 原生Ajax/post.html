@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax post请求</title>
+  <style>
+    #result{
+      border: solid 1px black;
+      height: 400px;
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+<div id="result"></div>
+<script>
+  const result = document.getElementById('result');
+  //绑定事件
+  result.addEventListener('mouseover',function (){
+      //创建对象
+    const xhr = new XMLHttpRequest();
+    //初始化 设置类型和url
+    xhr.open('post','http://127.0.0.1:8000/service');
+    //设置请求头信息 用于校验用户信息
+    xhr.setRequestHeader('content-type','josn')
+    //发送请求
+    xhr.send();
+    //事件绑定
+    xhr.onreadystatechange = function ()
+    {
+      //先判断是否完全响应，再判断http状态码
+      if (xhr.readyState==4){
+
+
+      if (xhr.status>=200&xhr.status<=300){
+              result.innerHTML = xhr.response;
+        }
+      }
+    }
+   })
+
+</script>
+</body>
+</html>

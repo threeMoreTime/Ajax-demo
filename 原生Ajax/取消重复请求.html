@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>取消重复请求</title>
+  <style>
+    button{
+      border: solid 1px black;
+      height: 100px;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+<button>发送请求</button>
+
+<script>
+  const xhrs = document.querySelectorAll('button')
+  //获取button元素
+  let x = null;
+  let insending = false;
+  //设置标识
+  xhrs[0].onclick = function (){
+    if (insending){
+      x.abort();
+      //检查是否在发送Ajax请求，是的话取消上一次请求发送再重新发送一次请求
+    }
+    insending = true;
+    x =new XMLHttpRequest()
+    //创建对象
+    x.open('GET','http://127.0.0.1:8000/delay')
+    //设置请求方法和URL路径
+    x.send()
+    //发送
+
+  }
+</script>
+</body>
+</html>

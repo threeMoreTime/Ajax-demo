@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax josn</title>
+  <style>
+    #result{
+      border: solid 1px black;
+      height: 400px;
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="result">
+
+  </div>
+  <script>
+    //获取id为result的元素
+    const result = document.getElementById('result');
+    //设置按下键盘事件触达
+    window.onkeydown = function (){
+      //发送请求
+      const xhr = new XMLHttpRequest()
+      //设置响应体数据类型
+       xhr.responseType = 'json';
+      //初始化
+      xhr.open('GET','http://127.0.0.1:8000/josn-sever');
+      //发送
+      xhr.send();
+      //事件绑定
+      xhr.onreadystatechange = function (){
+        //判断是否完全返回响应体
+        if (xhr.readyState ==4){
+          //判断http状态码是否正常
+          if (xhr.status>=200&&xhr.status<=300){
+
+            //手动将josn数据转换为string类型
+            // let data = JSON.parse(xhr.response)
+            //   console.log(xhr.response);
+              //显示data中的id属性
+            // result.innerHTML = data.id;
+          //    响应体数据类型自动转换
+              result.innerHTML = xhr.response;
+
+          }
+        }
+      }
+
+    }
+  </script>
+</body>
+</html>
